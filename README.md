@@ -5,7 +5,7 @@ A command line Tetris game.
   
 ![Gameplay](/images/gameplay1.png)  
   
-![Gameover](/images/gameplay3.png)
+![Gameover](/images/gameover.png)
 
 # Controls
 Left - Left Arrow Key  
