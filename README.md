@@ -1,6 +1,8 @@
 # Tetris
 
 A command line Tetris game.  
+  
+  
 ![Gameplay](/images/gameplay1.png)
 
 # Controls
