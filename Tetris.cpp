@@ -5,6 +5,7 @@
 #include <thread>
 #include <chrono>
 #include <vector>
+#include <fstream>
 #include <Windows.h>
 using namespace std;
 
@@ -118,8 +119,18 @@ int main()
     int nSpeedCounter = 0; // when speedcoutner = speed then force piece down
     bool bForceDown = false;
     int nPieceCount = 0;
+
     int nScore = 0;
+    int highScore;
     std::vector<int> vLines;
+
+    std::fstream scoreFile("score.txt");
+    if (!scoreFile) {
+        std::cout << "Error displaying high score.\n";
+    }
+    scoreFile >> highScore;
+    scoreFile.close();
+    remove("score.txt");
     
     while (!bGameOver) {
 
@@ -227,7 +238,15 @@ int main()
     }
 
     CloseHandle(hConsole);
-    std::cout << "Game over, you suck ass. Score:" << nScore << endl;
+    if (nScore > highScore) {
+        highScore = nScore;
+        std::cout << "NEW HIGH SCORE!!!\n";
+    }
+    std::ofstream toFile("score.txt");
+    toFile << highScore << std::endl;
+    std::cout << "***HIGH SCORE: " << highScore << "***\n\n";
+    std::cout << "YOUR SCORE: " << nScore << std::endl;
+    std::cout << "Game over, you suck ass.\n";
     system("pause");
 
     return 0;
